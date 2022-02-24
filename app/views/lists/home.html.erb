@@ -6,5 +6,9 @@
 
 <h2>Lists</h2>
 <% @lists.each do |list| %>
-  <h2><%= link_to list.name, list_path(list) %></h2>
+  <h2>
+    <%= link_to list.name, list_path(list) %>
+    / <%= link_to "edit", edit_list_path(list) %>
+    / <%= link_to "delete", list_path(list), method: :delete, data: { confirm: "are you sure?" } %>
+  </h2>
 <% end %>

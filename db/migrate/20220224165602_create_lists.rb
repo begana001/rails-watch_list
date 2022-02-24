@@ -3,7 +3,7 @@ class CreateLists < ActiveRecord::Migration[6.0]
     create_table :lists do |t|
       t.string :name
       t.text :description
-      t.integer :like
+      t.integer :like, default: 0
 
       t.timestamps
     end

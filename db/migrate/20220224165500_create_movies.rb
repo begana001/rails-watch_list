@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.text :overview
       t.string :poster_url
       t.integer :rating
-      t.integer :like
+      t.integer :like, default: 0
 
       t.timestamps
     end

@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_165834) do
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "like"
+    t.integer "like", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_165834) do
     t.text "overview"
     t.string "poster_url"
     t.integer "rating"
-    t.integer "like"
+    t.integer "like", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

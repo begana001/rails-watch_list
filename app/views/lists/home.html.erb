@@ -18,7 +18,9 @@
 <ul class="just-reviewd list-inline">
   <% @movies.take(10).each do |movie| %>
     <li>
-      <%= image_tag movie.poster_url, class: "poster_small" %>
+      <a href="<%= movie_path(movie) %>">
+        <%= image_tag movie.poster_url, class: "poster_small" %>
+      </a>
     </li>
   <% end %>
 </ul>

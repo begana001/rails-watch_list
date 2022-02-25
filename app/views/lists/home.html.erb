@@ -12,3 +12,15 @@
     / <%= link_to "delete", list_path(list), method: :delete, data: { confirm: "are you sure?" } %>
   </h2>
 <% end %>
+
+<h2>Movies</h2>
+<% @movies.take(3).each do |movie| %>
+  <%= image_tag movie.poster_url %>
+  <h2>
+    <%= movie.title %>
+  </h2>
+  <h5>
+    rating: <%= movie.rating %> / like: <%= movie.like %>
+  </h5>
+  <p><%= movie.overview %></p>
+<% end %>

@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   def home
     @lists = List.all
     @list = List.new
+    @movies = Movie.all
   end
 
   def index

@@ -17,7 +17,7 @@
 <% @movies.take(3).each do |movie| %>
   <%= image_tag movie.poster_url %>
   <h2>
-    <%= movie.title %>
+    <%= link_to movie.title, movie_path(movie) %>
   </h2>
   <h5>
     rating: <%= movie.rating %> / like: <%= movie.like %>

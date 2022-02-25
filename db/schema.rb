@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_165834) do
+ActiveRecord::Schema.define(version: 2022_02_25_163001) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.text "comment"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_165834) do
     t.integer "like", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "backdrop_url"
   end
 
   add_foreign_key "bookmarks", "lists"

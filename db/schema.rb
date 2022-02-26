@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_163001) do
+ActiveRecord::Schema.define(version: 2022_02_26_153053) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.text "comment"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2022_02_25_163001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "movie_reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.integer "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_movie_reviews_on_movie_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.text "overview"
@@ -44,4 +53,5 @@ ActiveRecord::Schema.define(version: 2022_02_25_163001) do
 
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "bookmarks", "movies"
+  add_foreign_key "movie_reviews", "movies"
 end

@@ -3,3 +3,11 @@
 <h4>rating: <%= @movie.rating %></h4>
 <p><%= @movie.overview %></p>
 
+<% @movie.movie_reviews.each do |review| %>
+  <h4>username / rating: <%= review.rating %></h4>
+  <p><%= review.comment %></p>
+<% end %>
+
+
+<%= render 'movie_reviews/form', movie: @movie, movie_review: @movie_review %>
+

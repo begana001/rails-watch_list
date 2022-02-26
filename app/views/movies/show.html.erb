@@ -5,7 +5,14 @@
 
 <% @movie.movie_reviews.each do |review| %>
   <h4>username / rating: <%= review.rating %></h4>
-  <h4><%= link_to "edit", edit_movie_movie_review_path(@movie, review)  %></h4>
+  <h4>
+    <%= link_to "edit", edit_movie_movie_review_path(@movie, review) %>
+    / <%= link_to "delete", 
+          movie_movie_review_path(@movie, review),
+          method: :delete,
+          data: { confirm: "are you sure?" }
+      %>
+  </h4>
   <p><%= review.comment %></p>
 <% end %>
 

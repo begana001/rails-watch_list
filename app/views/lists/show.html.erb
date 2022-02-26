@@ -23,3 +23,11 @@
   <p><%= @list.like %> LIKE</p>
   <p>SHARE</p>
 </div>
+
+<div class="bookmarks">
+  <% @list.bookmarks.each do |bookmark|  %>
+    <a href="<%= movie_path(bookmark.movie) %>">
+      <%= image_tag bookmark.movie.poster_url, class: "poster_small" %>
+    </a>
+  <% end %>  
+</div>

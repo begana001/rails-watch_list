@@ -2,9 +2,19 @@
   <%= image_tag "https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" %>
 </div>
 
+<%= link_to "add a moive", new_list_bookmark_path(@list,@bookmark)%>
+
 <div class="list-info">
   <p>LIST BY USERNAME</p>
   <h1><%= @list.name %></h1>
+  <p>
+    <%= link_to "edit", edit_list_path(@list) %> / 
+    <%= link_to "delete", 
+        list_path,
+        method: :delete,
+        data: { confirm: "are you sure?" }
+    %>
+  </p>
   <h3><%= @list.description %></h3>
 </div>
 

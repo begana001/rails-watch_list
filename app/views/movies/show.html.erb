@@ -5,9 +5,8 @@
 
 <% @movie.movie_reviews.each do |review| %>
   <h4>username / rating: <%= review.rating %></h4>
+  <h4><%= link_to "edit", edit_movie_movie_review_path(@movie, review)  %></h4>
   <p><%= review.comment %></p>
 <% end %>
 
-
 <%= render 'movie_reviews/form', movie: @movie, movie_review: @movie_review %>
-

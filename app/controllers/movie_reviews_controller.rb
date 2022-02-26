@@ -14,6 +14,22 @@ class MovieReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @movie = Movie.find(params[:movie_id])
+    @movie_review = MovieReview.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:movie_id])
+    @movie_review = MovieReview.find(params[:id])
+
+    if @movie_review.update(movie_review_params)
+      redirect_to movie_path(@movie_review.movie)
+    else
+      render 'movies/show'
+    end
+  end
+
   private
 
   def movie_review_params

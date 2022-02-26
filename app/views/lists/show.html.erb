@@ -25,9 +25,15 @@
 </div>
 
 <div class="bookmarks">
-  <% @list.bookmarks.each do |bookmark|  %>
-    <a href="<%= movie_path(bookmark.movie) %>">
-      <%= image_tag bookmark.movie.poster_url, class: "poster_small" %>
-    </a>
-  <% end %>  
+  <ul class="list-inline">
+    <% @list.bookmarks.each do |bookmark|  %>
+      <li>
+        <a href="<%= movie_path(bookmark.movie) %>">
+          <%= image_tag bookmark.movie.poster_url, class: "poster_small" %>
+        </a>
+        <p><%= bookmark.rating %> / 10</p>
+        <p><%= bookmark.comment %></p>
+      </li>
+    <% end %>  
+  </ul>
 </div>

@@ -32,6 +32,14 @@
           <%= image_tag bookmark.movie.poster_url, class: "poster_small" %>
         </a>
         <p><%= bookmark.rating %> / 10</p>
+        <p>
+          <%= link_to "edit", edit_list_bookmark_path(@list, bookmark)%>
+          <%= link_to "delete", 
+              list_bookmark_path(@list, bookmark),
+              method: :delete,
+              data: { confirm: "are you sure?" }
+          %>
+        </p>
         <p><%= bookmark.comment %></p>
       </li>
     <% end %>  

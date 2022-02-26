@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   end
   resources :lists do
     resources :bookmarks
+    resources :list_comments
   end
 end

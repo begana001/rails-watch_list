@@ -3,6 +3,7 @@ class ListsController < ApplicationController
     @lists = List.all
     @list = List.new
     @movies = Movie.all
+    @movie_reviews = MovieReview.all
   end
 
   def index

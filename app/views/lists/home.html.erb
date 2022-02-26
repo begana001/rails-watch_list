@@ -26,3 +26,10 @@
 </ul>
 
 <h2>POPULAR REVIEWS THIS WEEK... </h2>
+<% @movie_reviews.each do |review| %>
+  <%= image_tag review.movie.poster_url, class: "poster_small" %>
+  <h2><%= review.movie.title %></h2>
+  <h4>username / rating:<%= review.rating %></h4>
+  <p><%= review.comment %></p>
+<% end %>
+

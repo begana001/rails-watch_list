@@ -1,6 +1,6 @@
 class MovieReviewsController < ApplicationController
   def index
-    @movie = Movie.all
+    @movie_reviews = MovieReview.all
   end
 
   def create

@@ -1,5 +1,15 @@
-<h1><%= @list.name %></h1>
-<h3><%= @list.like %></h3>
-<h3><%= @list.description %></h3>
+<div class="list-banner">
+  <%= image_tag "https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" %>
+</div>
 
-<h4><%= link_to "home", root_path %></h4>
+<div class="list-info">
+  <p>LIST BY USERNAME</p>
+  <h1><%= @list.name %></h1>
+  <h3><%= @list.description %></h3>
+</div>
+
+<div class="list-info-card">
+  <p>1000 MOVIES</p>
+  <p><%= @list.like %> LIKE</p>
+  <p>SHARE</p>
+</div>

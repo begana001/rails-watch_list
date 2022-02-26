@@ -33,3 +33,12 @@
   <p><%= review.comment %></p>
 <% end %>
 
+
+<h2>POPULAR LISTS THIS WEEK...</h2>
+<% @lists.each do |list| %>
+  <div class="list-card_small">
+    <h1><%= list.name %></h1>
+    <p>username <%= list.like %>like 00comment</p>
+  </div>
+<% end %>
+

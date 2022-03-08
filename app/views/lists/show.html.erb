@@ -45,3 +45,14 @@
     <% end %>  
   </ul>
 </div>
+
+<div class="list_comments">
+  <% @list.list_comments.each do |comment| %>
+    <p>COMMENT BY USERNAME</p>
+    <p><%= comment.comment %></p>
+  <% end %>
+  
+  <div class="list_comment_form">
+    <%= render 'list_comments/form', list: @list, list_comment: @list_comment %>
+  </div>
+</div>

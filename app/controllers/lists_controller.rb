@@ -13,6 +13,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
+    @list_comment = ListComment.new
   end
 
   def new

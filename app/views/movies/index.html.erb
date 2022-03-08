@@ -1,0 +1,59 @@
+<h1>movies</h1>
+
+<div class="search">
+  <%= form_tag movies_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a movie"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<% if params[:query].present? %>
+  <h1>result</h1>
+  <h1>Result of </h1>
+  <ul class="result_movies list-inline">
+    <% @movies.each do |movie| %>
+      <li>
+        <a href="<%= movie_path(movie) %>">
+          <%= image_tag movie.poster_url, class: "poster_small" %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  
+  
+  
+<% else %>
+  <h1>NEW MOVIES...</h1>
+  <ul class="new_movies list-inline">
+    <% @new_movies.each do |movie| %>
+      <li>
+        <a href="<%= movie_path(movie) %>">
+          <%= image_tag movie.poster_url, class: "poster_small" %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  
+  <h1>POPULAR REVIEWS THIS WEEK...</h1>
+  <% @movie_reviews.each do |review| %>
+    <%= image_tag review.movie.poster_url, class: "poster_small" %>
+    <h2><%= review.movie.title %></h2>
+    <h4>username / rating:<%= review.rating %></h4>
+    <p><%= review.comment %></p>
+  <% end %>
+
+  <h1>CREW PICKS...</h1>
+  <ul class="new_movies list-inline">
+    <% @crew_picks.each do |movie| %>
+      <li>
+        <a href="<%= movie_path(movie) %>">
+          <%= image_tag movie.poster_url, class: "poster_small" %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

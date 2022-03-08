@@ -7,10 +7,14 @@ gem "autoprefixer-rails", "10.2.5"
 gem "font-awesome-sass", "~> 5.6.1"
 gem "simple_form"
 
+gem 'pg_search', '~> 2.3.0'
+
+gem 'pg'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

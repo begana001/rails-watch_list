@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_02_26_195708) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bookmarks", force: :cascade do |t|
     t.text "comment"
     t.integer "like"
-    t.integer "movie_id", null: false
-    t.integer "list_id", null: false
+    t.bigint "movie_id", null: false
+    t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rating"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_02_26_195708) do
 
   create_table "list_comments", force: :cascade do |t|
     t.text "comment"
-    t.integer "list_id", null: false
+    t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["list_id"], name: "index_list_comments_on_list_id"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_02_26_195708) do
   create_table "movie_reviews", force: :cascade do |t|
     t.text "comment"
     t.integer "rating"
-    t.integer "movie_id", null: false
+    t.bigint "movie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_movie_reviews_on_movie_id"

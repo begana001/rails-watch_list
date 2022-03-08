@@ -10,6 +10,27 @@ class ListCommentsController < ApplicationController
     end
   end
 
+  def edit
+    @list = List.find(params[:list_id])
+    @list_comment = ListComment.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:list_id])
+    @list_comment = ListComment.find(params[:id])
+    if @list_comment.update(list_comment_params)
+      redirect_to list_path(@list)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @list_comment = ListComment.find(params[:id])
+    @list_comment.destroy
+    redirect_to list_path(@list_comment.list)
+  end
+
   private
 
   def list_comment_params

@@ -48,7 +48,11 @@
 
 <div class="list_comments">
   <% @list.list_comments.each do |comment| %>
-    <p>COMMENT BY USERNAME</p>
+    <p>
+      COMMENT BY USERNAME
+      <%= link_to "edit", edit_list_list_comment_path(@list, comment) %>
+      <%= link_to "delete", list_list_comment_path(@list, comment), method: :delete, data: { confirm: "are you sure?" } %>
+    </p>
     <p><%= comment.comment %></p>
   <% end %>
   

@@ -6,6 +6,10 @@ class ListsController < ApplicationController
     @movie_reviews = MovieReview.all
   end
 
+  def profile
+    @account = current_user
+  end
+
   def index
     @lists = List.order(like: :desc)
   end

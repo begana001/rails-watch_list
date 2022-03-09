@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_172350) do
+ActiveRecord::Schema.define(version: 2022_03_09_191312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2022_03_09_172350) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.text "comment"
-    t.integer "like"
     t.bigint "movie_id", null: false
     t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -56,10 +55,18 @@ ActiveRecord::Schema.define(version: 2022_03_09_172350) do
     t.index ["list_id"], name: "index_list_comments_on_list_id"
   end
 
+  create_table "list_likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_list_likes_on_list_id"
+    t.index ["user_id"], name: "index_list_likes_on_user_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "like", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -100,5 +107,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_172350) do
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "bookmarks", "movies"
   add_foreign_key "list_comments", "lists"
+  add_foreign_key "list_likes", "lists"
+  add_foreign_key "list_likes", "users"
   add_foreign_key "movie_reviews", "movies"
 end

@@ -12,6 +12,9 @@
 <div class="list-info">
   <p>LIST BY USERNAME</p>
   <h1><%= @list.name %></h1>
+  <h3>
+    100 LIKES
+  </h3>
   <p>
     <%= link_to "edit", edit_list_path(@list) %> / 
     <%= link_to "delete", 
@@ -25,7 +28,7 @@
 
 <div class="list-info-card">
   <p>1000 MOVIES</p>
-  <p><%= @list.like %> LIKE</p>
+  <p><%= @list.list_likes.count %> LIKE</p>
   <p>SHARE</p>
 </div>
 

@@ -12,9 +12,6 @@
 <div class="list-info">
   <p>LIST BY USERNAME</p>
   <h1><%= @list.name %></h1>
-  <h3>
-    100 LIKES
-  </h3>
   <p>
     <%= link_to "edit", edit_list_path(@list) %> / 
     <%= link_to "delete", 
@@ -28,9 +25,19 @@
 
 <div class="list-info-card">
   <p>1000 MOVIES</p>
-  <p><%= @list.list_likes.count %> LIKE</p>
+  <p><%= @list.list_likes.count %> LIKES</p>
   <p>SHARE</p>
 </div>
+
+<h1>LIKE BUTTON</h1>
+<% if user_signed_in? %>
+ <% if @list.liked?(current_user) %>
+  <%= button_to "like", like_path(@list), method: :put, disabled: true %>
+ <% else %>
+  <%= button_to "like", like_path(@list), method: :put %>
+ <% end %>
+<% end %>
+
 
 <div class="bookmarks">
   <ul class="list-inline">

@@ -10,6 +10,14 @@ class ListsController < ApplicationController
     @account = current_user
   end
 
+  def like
+    # grep a list
+    @list = List.find(params[:id])
+    # create like with user id and list id
+    ListLike.create(user_id: current_user.id, list_id: @list.id )
+    redirect_to list_path(@list)
+  end
+
   def index
     @lists = List.order(like: :desc)
   end

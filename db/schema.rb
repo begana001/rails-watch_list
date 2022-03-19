@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_191312) do
+ActiveRecord::Schema.define(version: 2022_03_19_163137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_191312) do
   end
 
   create_table "list_likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "list_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["list_id"], name: "index_list_likes_on_list_id"
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2022_03_09_191312) do
     t.text "overview"
     t.string "poster_url"
     t.integer "rating"
-    t.integer "like", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "backdrop_url"

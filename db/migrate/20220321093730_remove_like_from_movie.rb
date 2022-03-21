@@ -1,4 +1,4 @@
-class RemoveLikeFromMovies < ActiveRecord::Migration[6.0]
+class RemoveLikeFromMovie < ActiveRecord::Migration[6.0]
   def change
     remove_column :movies, :like, :integer
   end

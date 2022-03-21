@@ -1,6 +1,13 @@
 <%= image_tag @movie.poster_url %>
 <h1><%= @movie.title %></h1>
-<h4>rating: <%= @movie.rating %></h4>
+<h4>rating: <%= @movie.rating %> / like: <%= @movie.movie_likes.count %></h4>
+<% if user_signed_in? %>
+  <% if @movie.liked?(current_user) %>
+    <%= button_to "like", movie_like_path(@movie), method: :put, disabled: true %>
+  <% else %>
+    <%= button_to "like", movie_like_path(@movie), method: :put %>
+  <% end %>
+<% end %>
 <p><%= @movie.overview %></p>
 
 <% @movie.movie_reviews.each do |review| %>

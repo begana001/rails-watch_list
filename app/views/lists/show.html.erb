@@ -24,18 +24,18 @@
 </div>
 
 <div class="list-info-card">
-  <p>1000 MOVIES</p>
+  <p><%= @list.movies.count %> MOVIES</p>
   <p><%= @list.list_likes.count %> LIKES</p>
   <p>SHARE</p>
 </div>
 
 <h1>LIKE BUTTON</h1>
 <% if user_signed_in? %>
- <% if @list.liked?(current_user) %>
-  <%= button_to "like", like_path(@list), method: :put, disabled: true %>
- <% else %>
-  <%= button_to "like", like_path(@list), method: :put %>
- <% end %>
+  <% if @list.liked?(current_user) %>
+    <%= button_to "like", list_like_path(@list), method: :put, disabled: true %>
+  <% else %>
+    <%= button_to "like", list_like_path(@list), method: :put %>
+  <% end %>
 <% end %>
 
 

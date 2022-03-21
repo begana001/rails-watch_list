@@ -15,4 +15,12 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie_review = MovieReview.new
   end
+
+  def like
+    # grep a movie
+    @movie = Movie.find(params[:id])
+    # create like with user id and list id
+    MovieLike.create(user_id: current_user.id, movie_id: @movie.id )
+    redirect_to movie_path(@movie)
+  end
 end

@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   has_many :bookmarks
   has_many :movie_reviews, dependent: :destroy
-
+  has_many :movie_likes
 
   validates :title, presence: true
   validates :overview, presence: true
@@ -14,4 +14,8 @@ class Movie < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  def liked?(user)
+    !!self.movie_likes.find{|like| like.user_id == user.id }
+  end
 end

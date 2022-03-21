@@ -4,10 +4,11 @@ require 'json'
 
 puts "Cleaning Database..."
 
+ListLike.destroy_all
+MovieLike.destroy_all
 Bookmark.destroy_all
 Movie.destroy_all
 List.destroy_all
-ListLike.destroy_all
 
 url = "http://tmdb.lewagon.com/movie/top_rated"
 
@@ -29,13 +30,15 @@ url = "http://tmdb.lewagon.com/movie/top_rated"
 end
 
 ### Users
-200.times do 
-  User.create(email:Faker::Internet.free_email, encrypted_password: Faker::Internet.password)
+100.times do
+  user = User.new(email: Faker::Internet.free_email, password: Faker::Internet.password)
+  puts "creating user #{user.email}..."
+  user.save!
 end
 
 ### Lists, bookmarks and list_likes
 100.times do |i|
-  list = List.create(name: Faker::Emotion.noun, description: Faker::Lorem.paragraph)
+  list = List.create(name: Faker::Book.genre, description: Faker::Quote.famous_last_words)
   puts "creating list #{list.name}..."
 
   random = rand(1..10)
@@ -45,7 +48,7 @@ end
   movies.each do |movie|
     puts "create #{movie.title} bookmark.."
     Bookmark.create(
-      comment: Faker::Lorem.paragraph(sentence_count: 2),
+      comment: Faker::Quote.matz,
       movie_id: movie.id,
       list_id: list.id,
       rating: rand(1..10)
@@ -53,10 +56,11 @@ end
   end
 
   ### list_likes
-  like_random = rand(1..200)
+  like_random = rand(1..100)
+  puts "give #{like_random} times like to #{list.name}..."
   like_random.times do
-    puts "give #{like_random} times like to #{list.name}..."
-    ListLike.create(user_id: User.all.sample, list_id: list.id)
+    user = User.all.sample
+    ListLike.create(user_id: user.id, list_id: list.id)
   end
 end
 

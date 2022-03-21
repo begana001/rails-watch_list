@@ -29,6 +29,12 @@ url = "http://tmdb.lewagon.com/movie/top_rated"
   end
 end
 
+movies = Movie.all.sample(10)
+movies.each_with_index do |movie, i|
+  MovieReview.create(comment: Faker::Quotes::Shakespeare.hamlet_quote, rating: rand(1..10), movie_id: movie.id, created_at: Date.today)
+  puts "creating comment number #{i}..."
+end
+
 ### Users
 100.times do
   user = User.new(email: Faker::Internet.free_email, password: Faker::Internet.password)

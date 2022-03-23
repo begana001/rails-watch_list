@@ -1,12 +1,16 @@
-.navbar-lewagon {
+.navbar-watchlist {
   justify-content: space-between;
   background: transparent;
+
+  h3 {
+    margin: 0;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-watchlist .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-watchlist.navbar-brand img {
   width: 40px;
 }

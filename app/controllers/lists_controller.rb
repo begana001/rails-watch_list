@@ -21,7 +21,7 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.order(like: :desc)
+    @lists = List.all
   end
 
   def show

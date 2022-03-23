@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
   def home
     # order lists by list_likes 
     @popular_lists = List.includes(:list_likes).sort{|a, b| b.list_likes.size <=> a.list_likes.size}

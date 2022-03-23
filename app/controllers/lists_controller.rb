@@ -35,6 +35,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user = current_user
     if @list.save
       redirect_to root_path
     else

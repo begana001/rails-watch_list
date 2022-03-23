@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_111508) do
+ActiveRecord::Schema.define(version: 2022_03_23_120514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 2022_03_21_111508) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rating"
+    t.bigint "user_id"
     t.index ["list_id"], name: "index_bookmarks_on_list_id"
     t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "list_comments", force: :cascade do |t|
@@ -52,7 +54,9 @@ ActiveRecord::Schema.define(version: 2022_03_21_111508) do
     t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["list_id"], name: "index_list_comments_on_list_id"
+    t.index ["user_id"], name: "index_list_comments_on_user_id"
   end
 
   create_table "list_likes", force: :cascade do |t|
@@ -69,6 +73,8 @@ ActiveRecord::Schema.define(version: 2022_03_21_111508) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "movie_likes", force: :cascade do |t|
@@ -86,7 +92,9 @@ ActiveRecord::Schema.define(version: 2022_03_21_111508) do
     t.bigint "movie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["movie_id"], name: "index_movie_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_movie_reviews_on_user_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -114,10 +122,14 @@ ActiveRecord::Schema.define(version: 2022_03_21_111508) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "bookmarks", "movies"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "list_comments", "lists"
+  add_foreign_key "list_comments", "users"
   add_foreign_key "list_likes", "lists"
   add_foreign_key "list_likes", "users"
+  add_foreign_key "lists", "users"
   add_foreign_key "movie_likes", "movies"
   add_foreign_key "movie_likes", "users"
   add_foreign_key "movie_reviews", "movies"
+  add_foreign_key "movie_reviews", "users"
 end

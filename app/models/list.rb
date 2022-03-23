@@ -4,6 +4,8 @@ class List < ApplicationRecord
   has_many :list_comments, dependent: :destroy
   has_many :list_likes, dependent: :destroy
 
+  belongs_to :user
+
   # cloudinary photo
   has_one_attached :photo
 

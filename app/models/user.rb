@@ -10,5 +10,8 @@ class User < ApplicationRecord
   has_many :movie_likes
   has_many :movie_reviews
 
+  # cloudinary for avatar
+  has_one_attached :photo
+
   validates :username, presence: true
 end

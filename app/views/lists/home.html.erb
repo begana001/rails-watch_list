@@ -42,7 +42,7 @@
 <% @popular_lists.take(8).each do |list| %>
   <div class="list-card_small">
     <h1><%= link_to list.name, list_path(list) %></h1>
-    <p>@<%= list.user.username %> <%= list.list_likes.count %> like 00comment</p>
+    <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %>comments</p>
   </div>
 <% end %>
 

@@ -83,12 +83,25 @@ end
   ### list_likes
   # give random amount of like to the list
   like_random = rand(1..10)
+  users = User.last(10)
   puts "give #{like_random} times like to #{list.name}..."
-  like_random.times do
+  like_random.times do |i|
     user = User.all.sample
     ListLike.create!(
-      user_id: user.id, 
+      user_id: users[i].id, 
       list_id: list.id
+    )
+  end
+
+  ### list_comments
+  comments_random = rand(1..10)
+  users = User.first(10)
+  puts "give #{comments_random} comments to #{list.name}..."
+  comments_random.times do |i|
+    ListComment.create!(
+      comment: Faker::Quotes::Shakespeare.king_richard_iii_quote,
+      list_id: list.id,
+      user_id: users[i].id
     )
   end
 end

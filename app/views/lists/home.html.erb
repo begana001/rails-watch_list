@@ -14,9 +14,9 @@
   <%= link_to "create list", new_list_path, class: "button_big" %>
 </div>
 
-<h2>JUST REVIEWED...</h2>
+<h2>POPULAR MOVIES...</h2>
 <ul class="just-reviewd list-inline">
-  <% @movies.take(10).each do |movie| %>
+  <% @movies.take(8).each do |movie| %>
     <li>
       <a href="<%= movie_path(movie) %>">
         <%= image_tag movie.poster_url, class: "poster_small" %>
@@ -25,20 +25,24 @@
   <% end %>
 </ul>
 
-<h2>POPULAR REVIEWS THIS WEEK... </h2>
-<% @movie_reviews.each do |review| %>
-  <%= image_tag review.movie.poster_url, class: "poster_small" %>
-  <h2><%= review.movie.title %></h2>
-  <h4>username / rating:<%= review.rating %></h4>
-  <p><%= review.comment %></p>
+<h2>JUST REVIEWED... </h2>
+<% @movie_reviews.take(8).each do |review| %>
+  <li>
+    <a href="<%= movie_path(review.movie) %>">
+      <%= image_tag review.movie.poster_url, class: "poster_small" %>
+    </a>
+    <h2><%= review.movie.title %></h2>
+    <h4>username / rating:<%= review.rating %></h4>
+    <p><%= review.comment %></p>
+  </li>
 <% end %>
 
 
 <h2>POPULAR LISTS THIS WEEK...</h2>
-<% @lists.each do |list| %>
+<% @popular_lists.take(8).each do |list| %>
   <div class="list-card_small">
     <h1><%= link_to list.name, list_path(list) %></h1>
-    <p>username 100like 00comment</p>
+    <p>username <%= list.list_likes.count %> like 00comment</p>
   </div>
 <% end %>
 

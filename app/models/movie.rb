@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   has_many :bookmarks
   has_many :movie_reviews, dependent: :destroy
-  has_many :movie_likes
+  has_many :movie_likes, dependent: :destroy
 
   validates :title, presence: true
   validates :overview, presence: true

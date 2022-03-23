@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
   def home
-    @lists = List.all
+    @popular_lists = List.includes(:list_likes).sort{|a, b| b.list_likes.size <=> a.list_likes.size}
     @list = List.new
-    @movies = Movie.all
-    @movie_reviews = MovieReview.all
+    @movies = Movie.order(rating: :desc)
+    @movie_reviews = MovieReview.order(created_at: :desc)
   end
 
   def profile

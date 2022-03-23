@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def home
+    # order lists by list_likes 
     @popular_lists = List.includes(:list_likes).sort{|a, b| b.list_likes.size <=> a.list_likes.size}
     @list = List.new
     @movies = Movie.order(rating: :desc)

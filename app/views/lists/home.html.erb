@@ -32,7 +32,7 @@
       <%= image_tag review.movie.poster_url, class: "poster_small" %>
     </a>
     <h2><%= review.movie.title %></h2>
-    <h4>username / rating:<%= review.rating %></h4>
+    <h4>@<%= review.user.username %> / rating:<%= review.rating %></h4>
     <p><%= review.comment %></p>
   </li>
 <% end %>
@@ -42,7 +42,7 @@
 <% @popular_lists.take(8).each do |list| %>
   <div class="list-card_small">
     <h1><%= link_to list.name, list_path(list) %></h1>
-    <p>username <%= list.list_likes.count %> like 00comment</p>
+    <p>@<%= list.user.username %> <%= list.list_likes.count %> like 00comment</p>
   </div>
 <% end %>
 

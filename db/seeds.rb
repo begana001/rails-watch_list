@@ -4,11 +4,13 @@ require 'json'
 
 puts "Cleaning Database..."
 
+# destroy and clean database
 ListLike.destroy_all
 MovieLike.destroy_all
 Bookmark.destroy_all
 Movie.destroy_all
 List.destroy_all
+User.destroy_all
 
 url = "http://tmdb.lewagon.com/movie/top_rated"
 
@@ -30,23 +32,36 @@ url = "http://tmdb.lewagon.com/movie/top_rated"
 end
 
 ### Users
-50.times do
-  user = User.new(email: Faker::Internet.free_email, password: Faker::Internet.password)
-  puts "creating user #{user.email}..."
+60.times do
+  user = User.new(
+    email: Faker::Internet.safe_email,
+    username: Faker::Name.middle_name, 
+    password: Faker::Internet.password
+  )
+  puts "creating user #{user.username}..."
   user.save!
 end
 
 movies = Movie.all.sample(10)
 movies.each_with_index do |movie, i|
   user = User.all.sample
-  MovieReview.create!(comment: Faker::Quotes::Shakespeare.hamlet_quote, rating: rand(1..10), movie_id: movie.id, created_at: Date.today, user_id: user.id)
+  MovieReview.create!(
+    comment: Faker::Quotes::Shakespeare.hamlet_quote, 
+    rating: rand(1..10), movie_id: movie.id, 
+    created_at: Date.today, 
+    user_id: user.id
+  )
   puts "creating comment number #{i}..."
 end
 
 ### Lists, bookmarks and list_likes
-30.times do |i|
+20.times do |i|
   user = User.all.sample
-  list = List.create!(name: Faker::Book.genre, description: Faker::Quote.famous_last_words, user_id: user.id)
+  list = List.create!(
+    name: Faker::Book.genre, 
+    description: Faker::Quote.famous_last_words, 
+    user_id: user.id
+  )
   puts "creating list #{list.name}..."
 
   random = rand(1..10)
@@ -66,11 +81,15 @@ end
   end
 
   ### list_likes
+  # give random amount of like to the list
   like_random = rand(1..10)
   puts "give #{like_random} times like to #{list.name}..."
   like_random.times do
     user = User.all.sample
-    ListLike.create!(user_id: user.id, list_id: list.id)
+    ListLike.create!(
+      user_id: user.id, 
+      list_id: list.id
+    )
   end
 end
 

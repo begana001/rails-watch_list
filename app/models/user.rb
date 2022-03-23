@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :list_likes
   has_many :movie_likes
   has_many :movie_reviews
+
+  validates :username, presence: true
 end

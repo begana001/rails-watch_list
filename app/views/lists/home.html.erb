@@ -25,24 +25,33 @@
   <% end %>
 </ul>
 
-<h2>JUST REVIEWED... </h2>
-<% @movie_reviews.take(8).each do |review| %>
-  <li>
-    <a href="<%= movie_path(review.movie) %>">
-      <%= image_tag review.movie.poster_url, class: "poster_small" %>
-    </a>
-    <h2><%= review.movie.title %></h2>
-    <h4>@<%= review.user.username %> / rating:<%= review.rating %></h4>
-    <p><%= review.comment %></p>
-  </li>
-<% end %>
+<div class="row">
 
-
-<h2>POPULAR LISTS THIS WEEK...</h2>
-<% @popular_lists.take(8).each do |list| %>
-  <div class="list-card_small">
-    <h1><%= link_to list.name, list_path(list) %></h1>
-    <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %>comments</p>
+  <div class="col-8">
+    <h2>JUST REVIEWED... </h2>
+      <% @movie_reviews.take(8).each do |review| %>
+        <li>
+          <a href="<%= movie_path(review.movie) %>">
+            <%= image_tag review.movie.poster_url, class: "poster_small" %>
+          </a>
+          <h2><%= review.movie.title %></h2>
+          <h4>@<%= review.user.username %> / rating:<%= review.rating %></h4>
+          <p><%= review.comment %></p>
+        </li>
+      <% end %>
   </div>
-<% end %>
+
+  <div class="col-4">
+    <h2>POPULAR LISTS THIS WEEK...</h2>
+    <% @popular_lists.take(8).each do |list| %>
+      <div class="list-card_small">
+        <h1><%= link_to list.name, list_path(list) %></h1>
+        <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %>comments</p>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
 

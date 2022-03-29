@@ -2,3 +2,17 @@
 .list-none {
   list-style: none;
 }
+
+.list-inline {
+  list-style: none;
+  padding-left: 0px;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}

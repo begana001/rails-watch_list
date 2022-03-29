@@ -15,8 +15,8 @@
 </div>
 
 <h2>POPULAR MOVIES...</h2>
-<ul class="just-reviewd list-inline">
-  <% @movies.take(8).each do |movie| %>
+<ul class="list-inline flex-between">
+  <% @movies.take(6).each do |movie| %>
     <li>
       <a href="<%= movie_path(movie) %>">
         <%= image_tag movie.poster_url, class: "poster_small" %>

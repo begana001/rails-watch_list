@@ -29,6 +29,7 @@
 
   <div class="col-8">
     <h2>JUST REVIEWED... </h2>
+    <ul class="list-none">
       <% @movie_reviews.take(8).each do |review| %>
         <li>
           <a href="<%= movie_path(review.movie) %>">
@@ -39,6 +40,7 @@
           <p><%= review.comment %></p>
         </li>
       <% end %>
+    </ul>
   </div>
 
   <div class="col-4">

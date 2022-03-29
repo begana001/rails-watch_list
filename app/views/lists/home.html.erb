@@ -19,7 +19,7 @@
   <% @movies.take(6).each do |movie| %>
     <li>
       <a href="<%= movie_path(movie) %>">
-        <%= image_tag movie.poster_url, class: "poster_small" %>
+        <%= image_tag movie.poster_url, class: "poster_middle" %>
       </a>
     </li>
   <% end %>
@@ -31,13 +31,17 @@
     <h2>JUST REVIEWED... </h2>
     <ul class="list-none">
       <% @movie_reviews.take(8).each do |review| %>
-        <li>
-          <a href="<%= movie_path(review.movie) %>">
-            <%= image_tag review.movie.poster_url, class: "poster_small" %>
-          </a>
-          <h2><%= review.movie.title %></h2>
-          <h4>@<%= review.user.username %> / rating:<%= review.rating %></h4>
-          <p><%= review.comment %></p>
+        <li class="d-flex">
+          <div>
+            <a href="<%= movie_path(review.movie) %>">
+              <%= image_tag review.movie.poster_url, class: "poster_small" %>
+            </a>
+          </div>
+          <div>
+            <h2><%= review.movie.title %></h2>
+            <h4>@<%= review.user.username %> / rating:<%= review.rating %></h4>
+            <p><%= review.comment %></p>
+          </div>
         </li>
       <% end %>
     </ul>

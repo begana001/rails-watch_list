@@ -25,6 +25,30 @@
   }
 }
 
+.just-reviewed {
+  div {
+    padding: 17px;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    height: 200px;
+    align-items: center;
+    background-color: #cccccc;
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    height: 68px;
+  }
+}
+
 .list-card_small {
   margin-top: 3px;
   border: 1px solid;

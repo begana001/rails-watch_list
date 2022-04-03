@@ -1,6 +1,28 @@
-.ux-card {
-  background-color: #99cc99;
-  margin-right: 10px;
+.ux-cards {
+  display: table;
+  margin: 50px auto;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  .ux-card {
+    background-color: #99cc99;
+    padding: 60px 120px;
+    border-radius: 10px;
+    &:first-child {
+      margin-right: 25px;
+    }
+  }
+
+  .ux-cards__top {
+    margin-bottom: 25px;
+  }
+
+  .ux-cards__bottom {
+    margin-left: 85px;
+  }
 }
 
 .list-card_small {

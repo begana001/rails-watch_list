@@ -1,31 +1,24 @@
-.ux-cards {
-  display: table;
-  margin: 50px auto;
-  text-align: center;
+.list-card_small {
+  position: relative;
+  margin-top: 3px;
+  border: 1px solid;
+  padding: 25px;
+  height: 200px;
+  margin-bottom: 25px;
+  text-align: right;
 
-  h1 {
-    margin-bottom: 25px;
+  div {
+    position: absolute;
+    right: 30px;
+    bottom: 31px;
   }
 
-  .ux-card {
-    background-color: #99cc99;
-    padding: 60px 120px;
-    border-radius: 10px;
-    &:first-child {
-      margin-right: 25px;
-    }
-  }
-
-  .ux-cards__top {
-    margin-bottom: 25px;
-  }
-
-  .ux-cards__bottom {
-    margin-left: 85px;
+  p {
+    margin: 0;
   }
 }
 
-.just-reviewed {
+.list-card_middle {
   div {
     padding: 17px;
   }
@@ -46,24 +39,6 @@
 
   p {
     height: 68px;
-  }
-}
-
-.list-card_small {
-  margin-top: 3px;
-  border: 1px solid;
-  padding: 25px;
-  p {
-    margin: 0;
-  }
-}
-
-.list-card_middle {
-  margin-top: 3px;
-  border: 1px solid;
-  padding: 50px;
-  p {
-    margin: 0;
   }
 }
 

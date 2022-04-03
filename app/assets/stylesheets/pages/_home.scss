@@ -4,6 +4,37 @@ h2 {
   margin-bottom: 15px;
 }
 
+.ux-cards {
+  display: table;
+  margin: 50px auto;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  .ux-card {
+    background-color: #99cc99;
+    padding: 60px 120px;
+    border-radius: 10px;
+    &:first-child {
+      margin-right: 25px;
+    }
+  }
+
+  .ux-cards__top {
+    margin-bottom: 25px;
+  }
+
+  .ux-cards__bottom {
+    margin-left: 85px;
+  }
+}
+
 .popular_movies {
   margin-bottom: 50px;
+}
+
+.popular_lists {
+  height: 200px;
 }

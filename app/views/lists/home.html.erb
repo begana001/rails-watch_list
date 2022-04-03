@@ -29,7 +29,7 @@
 
 <div class="row">
 
-  <div class="just-reviewed col-8">
+  <div class="list-card_middle col-8">
     <h2>JUST REVIEWED... </h2>
     <ul class="list-none">
       <% @movie_reviews.take(8).each do |review| %>
@@ -53,8 +53,10 @@
     <h2>POPULAR LISTS THIS WEEK...</h2>
     <% @popular_lists.take(8).each do |list| %>
       <div class="list-card_small">
-        <h1><%= link_to list.name, list_path(list) %></h1>
-        <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %>comments</p>
+        <div>
+          <h1><%= link_to list.name, list_path(list) %></h1>
+          <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %>comments</p>
+        </div>
       </div>
     <% end %>
   </div>

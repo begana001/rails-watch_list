@@ -14,20 +14,22 @@
   <%= link_to "create list", new_list_path, class: "button_big" %>
 </div>
 
-<h2>POPULAR MOVIES...</h2>
-<ul class="list-inline flex-between">
-  <% @movies.take(6).each do |movie| %>
-    <li>
-      <a href="<%= movie_path(movie) %>">
-        <%= image_tag movie.poster_url, class: "poster_middle" %>
-      </a>
-    </li>
-  <% end %>
-</ul>
+<div class="popular_movies">
+  <h2>POPULAR MOVIES...</h2>
+  <ul class="list-inline flex-between">
+    <% @movies.take(6).each do |movie| %>
+      <li>
+        <a href="<%= movie_path(movie) %>">
+          <%= image_tag movie.poster_url, class: "poster_middle" %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <div class="row">
 
-  <div class="col-8">
+  <div class="just-reviewed col-8">
     <h2>JUST REVIEWED... </h2>
     <ul class="list-none">
       <% @movie_reviews.take(8).each do |review| %>
@@ -47,7 +49,7 @@
     </ul>
   </div>
 
-  <div class="col-4">
+  <div class="popular-lists col-4">
     <h2>POPULAR LISTS THIS WEEK...</h2>
     <% @popular_lists.take(8).each do |list| %>
       <div class="list-card_small">

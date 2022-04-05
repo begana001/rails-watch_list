@@ -13,7 +13,20 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.44579830223104866) 20%,
+      rgba(0, 0, 0, 0.34775908654477417) 82%,
+      rgba(0, 0, 0, 0.9191876579733456) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.31134452071844365) 16%,
+      rgba(0, 0, 0, 0.36456580923384974) 82%,
+      rgba(0, 0, 0, 0.9191876579733456) 100%
+    ),
     asset-url("banner1.jpg");
 
   h1 {

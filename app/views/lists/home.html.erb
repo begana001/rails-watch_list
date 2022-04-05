@@ -1,8 +1,8 @@
 <div class="banner_big full-width">
   <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <%= link_to "Get started now!", root_path, class: "button_big" %>
+    <h1>SHARE YOUR INSPIRATION AND BECOME A WATCH LISTER</h1>
+    <p>show us your world behind the screen</p>
+    <%= link_to "BECOME A WATCH:LISTER", new_user_registration_path, class: "button_big" %>
   </div>
 </div>
 
@@ -15,7 +15,7 @@
 </div>
 
 <div class="popular_movies">
-  <h2>POPULAR MOVIES...</h2>
+  <h4>POPULAR MOVIES</h4>
   <ul class="list-inline flex-between">
     <% @movies.take(6).each do |movie| %>
       <li>
@@ -30,7 +30,7 @@
 <div class="row">
 
   <div class="list-card_middle col-8">
-    <h2>JUST REVIEWED... </h2>
+    <h4>JUST REVIEWED...</h4>
     <ul class="list-none">
       <% @movie_reviews.take(8).each do |review| %>
         <li class="d-flex">
@@ -50,7 +50,7 @@
   </div>
 
   <div class="popular-lists col-4">
-    <h2>POPULAR LISTS THIS WEEK...</h2>
+    <h4>POPULAR LISTS THIS WEEK...</h4>
     <% @popular_lists.take(8).each do |list| %>
       <div class="list-card_small">
         <div>

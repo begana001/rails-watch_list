@@ -2,7 +2,11 @@
   <div class="container">
     <h1>SHARE YOUR INSPIRATION AND BECOME A WATCH LISTER</h1>
     <p>show us your world behind the screen</p>
-    <%= link_to "BECOME A WATCH:LISTER", new_user_registration_path, class: "button_big" %>
+    <% if user_signed_in? %>
+      <%= link_to "EXPLORE WATCH:LISTS", new_user_registration_path, class: "button_big" %>
+    <% else %>
+      <%= link_to "BECOME A WATCH:LISTER", new_user_registration_path, class: "button_big" %>
+    <% end %>
   </div>
 </div>
 

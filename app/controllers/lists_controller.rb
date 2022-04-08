@@ -32,6 +32,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @popular_lists = List.includes(:list_likes).sort{|a, b| b.list_likes.size <=> a.list_likes.size}
   end
 
   def create

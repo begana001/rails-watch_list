@@ -5,19 +5,35 @@
   </div>
 </div>
 
-<h1>POPULAR THIS WEEK...</h1>
-<% @lists.each do |list| %>
-  <div class="list-card_middle">
-    <h1><%= link_to list.name, list_path(list) %></h1>
-    <h4>username <%= list.list_likes.count %>like 00comments</h4>
+<h4>POPULAR THIS WEEK...</h4>
+<div class="popular_list">
+  <div class="d-flex">
+    <% @lists[0..1].each do |list| %>
+      <div class="list-card_small">
+        <div>
+          <h1><%= link_to list.name, list_path(list) %></h1>
+          <h4>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %> comments</h4>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="d-flex">
+    <% @lists[2..3].each do |list| %>
+      <div class="list-card_small">
+        <div>
+          <h1><%= link_to list.name, list_path(list) %></h1>
+          <h4>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %> comments</h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<h1>RECENTLY LIKED...</h1>
+<h4>RECENTLY LIKED...</h4>
 <% @lists.each do |list| %>
   <div class="list-card_wide">
     <h4><%= link_to list.name, list_path(list) %></h4>
-    <p>username <%= list.list_likes.count %> like 00comments</p>
+    <p>@<%= list.user.username %> <%= list.list_likes.count %> like <%= list.list_comments.count %> comments</p>
     <p><%= list.description %></p>
   </div>
 <% end %>

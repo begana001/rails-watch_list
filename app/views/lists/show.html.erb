@@ -4,13 +4,10 @@
   <% else %>
     <%= image_tag "list.jpg" %>
   <% end %>
-  
 </div>
 
-<%= link_to "add a moive", new_list_bookmark_path(@list,@bookmark)%>
-
-<div class="list-info">
-  <p>LIST BY USERNAME</p>
+<p> <%= image_tag "avatar.jpg", class: "avatar-small" %> LISTED BY USERNAME</p>
+<div class="list-title d-flex">
   <h1><%= @list.name %></h1>
   <p>
     <%= link_to "edit", edit_list_path(@list) %> / 
@@ -18,15 +15,21 @@
         list_path,
         method: :delete,
         data: { confirm: "are you sure?" }
-    %>
+    %> / 
+    <%= link_to "add a moive", new_list_bookmark_path(@list,@bookmark)%>
   </p>
-  <h3><%= @list.description %></h3>
 </div>
 
-<div class="list-info-card">
-  <p><%= @list.movies.count %> MOVIES</p>
-  <p><%= @list.list_likes.count %> LIKES</p>
-  <p>SHARE</p>
+<div class="row">
+  <div class="list-info col-9">
+    <h3><%= @list.description %></h3>
+  </div>
+
+  <ul class="list-info-card list-none col-3">
+    <li><%= @list.movies.count %> MOVIES</li>
+    <li><%= @list.list_likes.count %> LIKES</li>
+    <li>SHARE</li>
+  </ul>
 </div>
 
 <h1>LIKE BUTTON</h1>
@@ -39,12 +42,11 @@
 <% end %>
 
 
-<div class="bookmarks">
-  <ul class="list-inline">
+  <ul class="list-bookmarks list-inline">
     <% @list.bookmarks.each do |bookmark|  %>
       <li>
         <a href="<%= movie_path(bookmark.movie) %>">
-          <%= image_tag bookmark.movie.poster_url, class: "poster_small" %>
+          <%= image_tag bookmark.movie.poster_url, class: "poster_middle" %>
         </a>
         <p><%= bookmark.rating %> / 10</p>
         <p>
@@ -55,11 +57,15 @@
               data: { confirm: "are you sure?" }
           %>
         </p>
+<% 
+=begin %>
+        click or mouse over modal
         <p><%= bookmark.comment %></p>
+<% 
+=end %>
       </li>
     <% end %>  
   </ul>
-</div>
 
 <div class="list_comments">
   <% @list.list_comments.each do |comment| %>
